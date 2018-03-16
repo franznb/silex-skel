@@ -14,6 +14,21 @@ $app->get('/', function () use ($app) {
 ->bind('homepage')
 ;
 
+$app->get('/', function () use ($app) {
+    return $app['twig']->render('index.html.twig', array());
+})
+->bind('homepage')
+;
+
+
+$app->get('/directo/{id}', function ( $id ) use ($app) {
+    return $app['twig']->render('directo.html.twig', array( 'id' => $id ));
+})
+->bind('Directo')
+;
+
+
+
 $app->error(function (\Exception $e, Request $request, $code) use ($app) {
     if ($app['debug']) {
         return;
